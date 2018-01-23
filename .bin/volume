@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# z3bra - (c) wtfpl 2014
+
+CHANNEL=$(amixer | sed "1s/^.*'\(.*\)'.*$/\1/p;d")
+
+usage () {
+    cat <<EOF
+usage: $(basename $0) [-hsla] [-+!]
+    -h : print help
+    -s : print on/off
+    -l : print the current volume percentage (default)
+    -a : print both level and state
+     + : volume +5%
+     - : volume -5%
+     ! : toggle mute
+EOF
+}
+
+level() {
+    amixer get $CHANNEL | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p' | uniq
+}
+
+state() {
+    amixer get $CHANNEL | sed -n 's/^.*\[\(o[nf]\+\)]$/\1/p' | uniq
+}
+
+# print out level and state if no argument is given
+test $# -eq 0 && echo "`level`" && exit 0
+
+case $1 in
+    -h)        usage ;;
+    -s)        state ;;
+    -l)        level ;;
+     up|+)     amixer set $CHANNEL 5%+ >/dev/null;;
+     down|-)   amixer set $CHANNEL 5%- >/dev/null;;
+     toggle|!) amixer set $CHANNEL toggle >/dev/null;;
+     *)        amixer set $CHANNEL $1 >/dev/null;;
+esac
