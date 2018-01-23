@@ -22,7 +22,7 @@ alias info='info.sh'
 alias todo='vim ~/todo'
 alias rnet='sudo sh /etc/netstart'
 
-alias zzz='xlock -mode matrix'
+alias zzz='systemctl suspend'
 alias shootme='DISPLAY=:0 import -window root ~/Pictures/scrots/scrot-$(date +%m-%d-%Y-%H-%M-%S).png'
 #alias free='top -n 1 | head -n 5 | tail -n 2'
 alias blankf='cdrecord dev=/dev/rcd0d blank=fast'
