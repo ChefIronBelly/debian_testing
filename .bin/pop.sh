@@ -18,15 +18,15 @@ sp="${a}${C1}"
 
 default_geometry() {
     # get screen size
-    x=$(wattr w `lsw -r`)
-    y=$(wattr h `lsw -r`)
+    #x=$(wattr w `lsw -r`)
+    #y=$(wattr h `lsw -r`)
 
-    width=1920
+    width=1820
     height=16
 
     offy=0
 #    offx=$(( x - x/2 - $width/2 ))
-    offx=90
+    offx=100
 
     echo "${width}x${height}+${offx}+${offy}"
 }

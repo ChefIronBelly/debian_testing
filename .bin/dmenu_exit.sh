@@ -3,7 +3,7 @@
 
 . $HOME/.wmrc
 
-choice=`echo -e "0: Logout\n1: Shutdown\n2: Reboot\n3:Lock\n4:Cancel" | dmenu $DMENU_FN $DMENU_NB $DMENU_NF $DMENU_SF $DMENU_SB -p "select an action:" | cut -d ':' -f 1`
+choice=`echo "0: Logout\n1: Shutdown\n2: Reboot\n3:Lock\n4:Cancel" | dmenu $DMENU_FN $DMENU_NB $DMENU_NF $DMENU_SF $DMENU_SB -p "select an action:" | cut -d ':' -f 1`
 
 # execute the choice in background
 case "$choice" in
