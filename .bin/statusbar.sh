@@ -57,7 +57,7 @@ ip() {
 }
 
 vol() {
-	vol=$(amixer get Master|awk 'NR==5 {print $4}'|cut -d '%' -f1 | cut -d '[' -f2)
+	vol=$(amixer get Master|awk 'NR==6 {print $5}'|cut -d '%' -f1 | cut -d '[' -f2)
 	echo $vol
 }
 
