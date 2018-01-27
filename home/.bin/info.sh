@@ -70,11 +70,10 @@ print-wm() {
 }
            
 print-font() {
-    fontstr=$(xrdb -query 2>/dev/null | grep '*faceName:')
-    font=$(echo $fontstr | awk -F: '{ print $3 }')
+    fontstr=$(xrdb -query 2>/dev/null | grep '*font:')
+    font=$(echo $fontstr | awk -F: '{ print $2 }')
     [[ $font != "" ]] && color-echo 'FONT' '     '"$font"
 }
-
 print-distro() {
     [[ -e /etc/os-release ]] && source /etc/os-release
     if [ -n "$PRETTY_NAME" ]; then
