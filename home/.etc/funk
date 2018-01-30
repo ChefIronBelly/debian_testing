@@ -1,7 +1,7 @@
 # .etc/funk
 
-alias upd='sudo apt-get update'
-alias upg='sudo apt-get upgrade'
+alias upd='sudo apt update'
+alias upg='sudo apt dist-upgrade'
 alias ins='sudo apt install --no-install-recommends'
 alias search='sudo apt-cache search'
 alias autoremove='sudo apt autoremove'
