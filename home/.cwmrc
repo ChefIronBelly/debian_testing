@@ -51,7 +51,7 @@ bind 4-m      "urxvtc -g 126x72+995+32"  # right 50%
 bind 4-comma  "urxvtc -g 263x34+32+32"  # top 50%
 bind 4-period "urxvtc -g 263x34+32+550" # bottom 50%
 bind SM-s     status.sh
-bind SM-f     firefox
+bind SM-f     firefox.sh
 bind SM-g     geany
 bind SM-d     dmenu_start.sh
 bind SM-r     dmenu_soma.sh
@@ -59,8 +59,8 @@ bind SM-r     dmenu_soma.sh
 bind SM-x     dmenu_hset.sh
 bind SM-q     dmenu_exit.sh
 bind M-0      "pactl set-sink-mute 0 toggle" # audio
-bind M-minus  "pactl set-sink-volume 0 -10%" # audio lower
-bind M-equal  "pactl set-sink-volume 0 +10%" # audio raise
+bind M-minus  "pactl set-sink-volume 0 -5%" # audio lower
+bind M-equal  "pactl set-sink-volume 0 +5%" # audio raise
 bind M-u      uptime.sh
 bind M-w      wetcat.sh
 
