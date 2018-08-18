@@ -38,8 +38,8 @@ alias install='sudo apt install --no-install-recommends'
 
 # REBOOT/SHUTDOWN
 alias reboot='sudo /sbin/shutdown -r now "R E B O O T"'
-alias poweroff='sudo /sbin/shutdown -p now "P O W E R O F F"'
-alias shutdown='sudo /sbin/shutdown -p now "Going D O W N to the crossroads"'
+alias poweroff='sudo /sbin/shutdown  now "P O W E R O F F"'
+alias shutdown='sudo /sbin/shutdown  now "Going D O W N to the crossroads"'
 alias suspend='sudo pm-suspend'
 
 # Space on drive
