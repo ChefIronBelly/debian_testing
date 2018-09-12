@@ -11,11 +11,11 @@ static const char normfgcolor[]     = "#D8DEE9";
 static const char selbordercolor[]  = "#81A1C1";
 static const char selbgcolor[]      = "#81A1C1";
 static const char selfgcolor[]      = "#2E3440";
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
-static const unsigned int snap      = 4;        /* snap pixel */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const unsigned int gappx     = 8; 	   /* gap pixel between windows */ 
+static const unsigned int gappx     = 8; 	/* gap pixel between windows */ 
 
 /* tagging */
 static const char *tags[] = { "term", "surf", "edit", "file", "misc" };
@@ -27,20 +27,22 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Nightly",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Geany",    NULL,       NULL,       1 << 2,    	0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "|C|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -57,12 +59,24 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_start.sh", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "xst", NULL };
+static const char *surfcmd[]  = { "firefox", NULL };
+static const char *editcmd[]  = { "geany", NULL };
+static const char *somacmd[]  = { "dmenu_soma.sh", NULL };
+static const char *volup[]    = { "volume.sh", "+", NULL };
+static const char *voldown[]  = { "volume.sh", "-", NULL };
+static const char *volmute[]  = { "volume.sh", "0", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_f, 	   spawn,          {.v = surfcmd } },
+	{ MODKEY|ShiftMask,             XK_g, 	   spawn,          {.v = editcmd } },
+	{ MODKEY|ShiftMask,             XK_r, 	   spawn,          {.v = somacmd } },	
+	{ MODKEY,			XK_F10,    spawn,          {.v = volup } },
+	{ MODKEY,			XK_F11,    spawn,          {.v = voldown } },
+	{ MODKEY,			XK_F12,    spawn,          {.v = volmute } },			
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -76,6 +90,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
