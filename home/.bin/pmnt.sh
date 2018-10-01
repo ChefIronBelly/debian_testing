@@ -1,4 +1,5 @@
 #! /bin/sh
 # phone mount
 
-jmtpfs ~/Android_transfer
+sudo simple-mtpfs --list-devices
+sudo simple-mtpfs --device 1 /media/phone

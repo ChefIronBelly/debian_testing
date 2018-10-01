@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -d "$HOME/Source/OOTB-defaults" ]; then
-cd $HOME/Source/OOTB-defaults && echo "[Updating] Out of the Box ..." && git pull
+if [ -d "$HOME/Source/alpine" ]; then
+cd $HOME/Source/alpine && echo "[Updating] Alpine linux ..." && git pull
 fi
 if [ -d "$HOME/Source/BSD-Configs" ]; then
 cd $HOME/Source/BSD-Configs && echo "[Updating] BSD-Configs ..." && git pull
@@ -24,7 +24,7 @@ fi
 if [ -d "$HOME/Source/sxhkd" ]; then
 cd $HOME/Source/sxhkd && echo "[Updating] shxkd ..." && git pull
 fi 
-if [ -d "$HOME/Source/Base" ]; then
-cd $HOME/Source/Base && echo "[Updating] Pur Linux base ..." && git pull
+if [ -d "$HOME/Source/debian_testing" ]; then
+cd $HOME/Source/debian_testing && echo "[Updating] Debian Testing ..." && git pull
 fi
 echo "[All] githubs updated ..."
