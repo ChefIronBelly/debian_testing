@@ -1,0 +1,13 @@
+** Debian **
+
+jmtpfs
+install jmtpfs
+
+Device listing
+sudo jmtpfs -l
+
+Mount
+sudo jmtpfs /media/phone
+
+Unmount
+sudo fusermount -u /media/phone
